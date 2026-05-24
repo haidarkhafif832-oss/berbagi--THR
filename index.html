@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saling Berbagi - Login Google</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🤝 Saling Berbagi</h1>
+            <p>Platform berbagi informasi dengan aman</p>
+        </div>
+
+        <!-- Counter Pengunjung -->
+        <div class="visitor-counter">
+            <div class="counter-box">
+                <h3>👥 Total Pengunjung</h3>
+                <div class="counter-number" id="visitor-count">0</div>
+            </div>
+        </div>
+
+        <!-- Section Login -->
+        <div id="login-section" class="section active">
+            <div class="card">
+                <h2>Masuk dengan Google</h2>
+                <p>Silakan login untuk melanjutkan</p>
+                
+                <div id="g_id_onload"
+                     data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
+
+                <div class="error-message" id="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Section User yang Login -->
+        <div id="dashboard-section" class="section">
+            <div class="welcome-card">
+                <img id="user-avatar" class="user-avatar" src="" alt="Avatar">
+                <div class="welcome-content">
+                    <h2>Selamat Datang, <span id="user-name"></span>! 👋</h2>
+                    <p id="user-email"></p>
+                </div>
+            </div>
+
+            <!-- Statistik -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>📊 Total Pengunjung</h3>
+                    <p class="stat-number" id="total-visitors">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>📝 Total User Terdaftar</h3>
+                    <p class="stat-number" id="total-users">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>⏰ Login Hari Ini</h3>
+                    <p class="stat-number" id="today-logins">0</p>
+                </div>
+            </div>
+
+            <!-- Daftar User yang Pernah Login -->
+            <div class="users-section">
+                <h3>📋 Daftar User yang Pernah Login</h3>
+                <div class="users-list" id="users-list">
+                    <p class="empty-state">Memuat data...</p>
+                </div>
+            </div>
+
+            <!-- Tombol Action -->
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
+                <button class="btn btn-danger" onclick="handleLogout()">🚪 Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
